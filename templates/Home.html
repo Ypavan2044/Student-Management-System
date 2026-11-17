@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Management System</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* General Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f5f6fc;
+    color: #252b42;
+}
+
+/* Header */
+
+.header {
+    background: linear-gradient(120deg, #312e81, #6366f1);
+    color: white;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(49,46,129,0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo i {
+    font-size: 30px;
+    color: #c4b5fd;
+}
+
+.logo h1 {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+/* Add Student Button */
+
+.add-btn {
+    text-decoration: none;
+    background: white;
+    color: #4f46e5;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #ede9fe;
+}
+
+/* Main Section */
+
+.main {
+    width: 92%;
+    margin: 35px auto;
+}
+
+.heading {
+    margin-bottom: 40px;
+}
+
+.heading h2 {
+    font-size: 28px;
+    color: #312e81;
+    font-weight: 700;
+}
+
+/* Student Grid */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 30px;
+}
+
+/* Student Card */
+
+.card {
+    background: white;
+    border: 1px solid #eeedfa;
+    border-radius: 18px;
+    padding: 25px;
+
+    /* Remove colored shadow */
+    box-shadow: none;
+
+    transition: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Remove Purple Top Line */
+
+.card::before {
+    display: none;
+}
+
+/* Remove Hover Effects */
+
+.card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Student Image */
+
+.card img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 8px auto 18px;
+    border: 5px solid #ede9fe;
+    background: #f1f0ff;
+}
+
+/* Student Name */
+
+.student-name {
+    text-align: center;
+    font-size: 19px;
+    color: #312e81;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+/* Student Details */
+
+.details {
+    border-top: 1px solid #eeeeF5;
+    padding-top: 18px;
+}
+
+.details p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #8589a3;
+    margin-bottom: 15px;
+}
+
+.details span {
+    color: #353957;
+    font-weight: 600;
+}
+
+/* Action Buttons */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 17px;
+    border-top: 1px solid #eeeeF5;
+}
+
+.actions a,
+.actions button {
+    text-decoration: none;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.actions form {
+    margin: 0;
+}
+
+/* View Button */
+
+.view-btn {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.view-btn:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+/* Update Button */
+
+.update-btn {
+    background: orange;
+    color: white;
+}
+
+.update-btn:hover {
+    background: #e69500;
+}
+
+/* Delete Button */
+
+.delete-btn {
+    background: #fff1f2;
+    color: #e11d48;
+}
+
+.delete-btn:hover {
+    background: #e11d48;
+    color: white;
+}
+
+/* Responsive Design */
+
+@media(max-width: 700px) {
+
+    .header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    .main {
+        width: 92%;
+        margin: 30px auto;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .heading h2 {
+        font-size: 23px;
+    }
+
+    .actions {
+        gap: 6px;
+    }
+
+    .actions a,
+    .actions button {
+        padding: 9px 10px;
+        font-size: 11px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+
+<div class="header">
+
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h1>Student Management System</h1>
+    </div>
+
+    <a href="/add-student" class="add-btn">
+        <i class="fa-solid fa-plus"></i> Add Student
+    </a>
+
+</div>
+
+<!-- Main Section -->
+
+<div class="main">
+
+    <div class="heading">
+        <h2>Student Details</h2>
+    </div>
+
+    <!-- Student Cards -->
+
+    <div class="container">
+
+        {% for std in stds %}
+
+        <div class="card">
+
+            <!-- Student Image -->
+
+            <img src="{{std[6]}}" alt="Student Image">
+
+            <!-- Student Name -->
+
+            <h3 class="student-name">
+                {{std[1]}}
+            </h3>
+
+            <!-- Student Details -->
+
+            <div class="details">
+
+                <p>Age <span>{{std[2]}}</span></p>
+
+                <p>Gender <span>{{std[3]}}</span></p>
+
+                <p>Course <span>{{std[5]}}</span></p>
+
+            </div>
+
+            <!-- Action Buttons -->
+
+            <div class="actions">
+
+                <a href="/students/{{std[0]}}" class="view-btn">
+                    <i class="fa-solid fa-eye"></i> View
+                </a>
+
+                <a href="/student/edit/{{std[0]}}" class="update-btn">
+                    <i class="fa-solid fa-pen-to-square"></i> Update
+                </a>
+
+                <form action="/student/delete/{{std[0]}}" method="post"
+                      onsubmit="return confirm('Are you sure you want to delete this student?')">
+
+                    <button type="submit" class="delete-btn">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

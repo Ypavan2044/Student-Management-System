@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6fc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            color: #252b42;
+        }
+
+        /* Profile Card */
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #eeedfa;
+            box-shadow: 0 10px 35px rgba(49,46,129,0.09);
+        }
+
+        /* Profile Header */
+
+        .profile-header {
+            background: linear-gradient(120deg, #312e81, #6366f1);
+            padding: 35px 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .profile-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #faca8b, #fddeb5);
+        }
+
+        .profile-img {
+            width: 125px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ddd6fe;
+            background: #ede9fe;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .profile-header h2 {
+            font-size: 24px;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+        .profile-header p {
+            color: #ddd6fe;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        /* Student Information */
+
+        .details {
+            padding: 28px 30px;
+        }
+
+        .details h3 {
+            font-size: 19px;
+            color: #312e81;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .details h3 i {
+            color: #6366f1;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eeeeF5;
+            gap: 12px;
+        }
+
+        .detail-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .detail-row span:first-child {
+            color: #8589a3;
+            font-size: 14px;
+        }
+
+        .detail-row span:last-child {
+            color: #353957;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .detail-row i {
+            color: #6366f1;
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        /* Attendance Status */
+
+        .status-section {
+            margin-top: 23px;
+            padding: 18px;
+            background: #fafaff;
+            border: 1px solid #eeedfa;
+            border-radius: 12px;
+        }
+
+        .status-section p {
+            color: #353957;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 13px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .present {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .absent {
+            background: #fff1f2;
+            color: #e11d48;
+        }
+
+        /* Footer */
+
+        .footer {
+            padding: 22px 30px;
+            background: #fafaff;
+            border-top: 1px solid #eeeeF5;
+        }
+
+        .home-btn {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            background: linear-gradient(120deg, #e5ab46, #f1b363);
+            color: white;
+            padding: 13px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background: orange;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79,70,229,0.2);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 480px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .details {
+                padding: 23px 20px;
+            }
+
+            .profile-header {
+                padding: 28px 20px;
+            }
+
+            .profile-header h2 {
+                font-size: 21px;
+            }
+
+            .footer {
+                padding: 18px 20px;
+            }
+
+            .detail-row {
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <!-- Profile Header -->
+
+        <div class="profile-header">
+
+            <img src="{{std[6]}}"
+                 alt="Student Image"
+                 class="profile-img">
+
+            <h2>{{std[1]}}</h2>
+
+            <p>
+                <i class="fa-solid fa-graduation-cap"></i>
+                Student Profile
+            </p>
+
+        </div>
+        <div class="details">
+            <h3>
+                <i class="fa-solid fa-user-circle"></i>
+                Personal Information
+            </h3>
+            <div class="detail-row">
+                <span><i class="fa-solid fa-user"></i> Student Name</span>
+                <span>{{std[1]}}</span>
+            </div>
+            <div class="detail-row">
+                <span><i class="fa-solid fa-calendar"></i> Age</span>
+                <span>{{std[2]}}</span>
+            </div>
+            <div class="detail-row">
+                <span><i class="fa-solid fa-venus-mars"></i> Gender</span>
+                <span>{{std[3]}}</span>
+            </div>
+            <div class="detail-row">
+                <span><i class="fa-solid fa-star"></i> Marks</span>
+                <span>{{std[4]}} / 100</span>
+            </div>
+
+            <div class="detail-row">
+                <span><i class="fa-solid fa-book"></i> Course</span>
+                <span>{{std[5]}}</span>
+            </div>
+
+
+            <div class="status-section">
+
+                <p>
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    Attendance Status
+                </p>
+
+                {% if std[7] %}
+                    <span class="status present">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Present
+                    </span>
+                {% else %}
+                    <span class="status absent">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        Absent
+                    </span>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+
+        <div class="footer">
+
+            <a href="/" class="home-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
